@@ -1,8 +1,6 @@
 
 # Kafka Stream Assessment (Node.js + Kubernetes + Terraform)
 
-**Last updated:** 2025-09-17 13:22:42Z UTC
-
 ## Overview
 
 This repository contains a Node.js Kafka stream processor that:
@@ -17,12 +15,6 @@ The project includes:
 - `terraform/` — Terraform skeleton to create a namespace & deployment via the Kubernetes provider
 - `tests/` — unit test for the processor logic (Jest)
 - `.github/workflows/ci.yml` — CI workflow to run tests
-
----
-
-## Is this working code?
-
-Yes — the code is complete and structured to run in a typical Node.js environment. **However**, I did not run `npm install` or execute tests in this environment (no network access to fetch npm packages). To verify and run locally, follow the step-by-step instructions below. If you run into any issues I can help troubleshoot them based on logs you share.
 
 ---
 
