@@ -1,0 +1,9 @@
+require('dotenv').config();
+module.exports = {
+  kafkaBrokers: (process.env.KAFKA_BROKERS || 'localhost:9092').split(','),
+  inputTopic: process.env.INPUT_TOPIC || 'input-topic',
+  outputTopic: process.env.OUTPUT_TOPIC || 'output-topic',
+  groupId: process.env.GROUP_ID || 'kafka-stream-processor-group',
+  windowMs: parseInt(process.env.WINDOW_MS || '30000', 10),
+  flushIntervalMs: parseInt(process.env.FLUSH_INTERVAL_MS || '5000', 10),
+};
