@@ -1,0 +1,19 @@
+{
+  "name": "kafka-stream-assessment",
+  "version": "1.0.0",
+  "description": "Kafka stream processor (Node.js)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest --runInBand",
+    "lint": "eslint . --ext .js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "pino": "^8.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
