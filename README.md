@@ -362,5 +362,3 @@ Expand to sliding/session windows
 ---
 
 If you want, I can **also provide a ready-to-download ZIP** of the repo including this updated README and all folder skeletons (`k8s/`, `terraform/`, `src/`, `tests/`, `.github/`).  
-
-Do you want me to create that ZIP for you?
