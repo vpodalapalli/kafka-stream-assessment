@@ -215,22 +215,6 @@ Adjust provider auth and values to match your environment. This is a starting po
 - For production use, enable SASL/SSL and provide Kafka credentials through Kubernetes secrets.
 - The processor keeps window state in memory — on restart it will lose in-flight counts. For production, use a persistent state store or Kafka Streams with RocksDB.
 
----
-
-## Next steps / enhancements
-
-- Add an HTTP metrics/health endpoint for liveness/readiness probes in Kubernetes.
-- Persist windowed state to a durable store (Redis, RocksDB) to tolerate restarts.
-- Add integration tests using testcontainers' Kafka or a local ephemeral Kafka cluster.
-- Add more advanced windowing (sliding/session windows) or joins with other topics.
-
----
-
-If you'd like, I can also:
-- add the `docker-compose.yml` and the small `scripts/send.js` producer into the repo,
-- add a small HTTP health endpoint to the Node.js app,
-- or attempt to run unit tests and provide logs if you provide an environment with network access.
-
 ## Run with Docker-compose file
 
 The repo includes a docker-compose.yml file that runs Zookeeper, Kafka, and the Stream Processor.
