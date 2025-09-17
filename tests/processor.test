@@ -1,0 +1,27 @@
+const Processor = require('../src/processor');
+class FakeProducer {
+  constructor() { this.sent = []; }
+  async send(topic, messages) { this.sent.push({ topic, messages }); }
+}
+describe('Processor', () => {
+  it('aggregates counts per key and flushes', async () => {
+    const producer = new FakeProducer();
+    const proc = new Processor(producer);
+    proc.windowMs = 100;
+    const base = Date.now();
+    await proc.onMessage({ key: 'a', value: '1', timestamp: base });
+    await proc.onMessage({ key: 'a', value: '2', timestamp: base + 10 });
+    await proc.onMessage({ key: 'b', value: '3', timestamp: base + 20 });
+    proc.currentWindowStart = proc._floorWindow(base);
+    await proc._flushWindow(proc.currentWindowStart);
+    expect(producer.sent.length).toBe(1);
+    const records = producer.sent[0].messages;
+    const keys = records.map(r => r.key).sort();
+    expect(keys).toEqual(['a', 'b']);
+    const values = records.map(r => JSON.parse(r.value));
+    const a = values.find(v => v.key === 'a');
+    const b = values.find(v => v.key === 'b');
+    expect(a.count).toBe(2);
+    expect(b.count).toBe(1);
+  });
+});
